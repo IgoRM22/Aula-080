@@ -1,13 +1,30 @@
-<table>
-    <tr>
-      <th>Nome do usuário</th>
-      <th>Função</th>
-    </tr>
-    {% for user in users %}
-    <tr>
-      <td>{{ user.username }}</td>
-      <td>  </td>
-    </tr>
-    {% endfor %}
-  </table>
-  
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Olá, {% if name %}{{ name }}{% else %}Estranho{% endif %}!</h1>
+    {% if not known %}
+        <p>Prazer em te conhecer!</p>
+    {% else %}
+        <p>Que bom te ver de novo!</p>
+    {% endif %}
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{{ wtf.quick_form(form) }}
+{% endblock %}
