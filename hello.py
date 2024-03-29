@@ -46,6 +46,7 @@ class NameForm(FlaskForm):
     name = StringField('What is your name?', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
+
 @app.shell_context_processor
 def make_shell_context():
     return dict(db=db, User=User, Role=Role)
@@ -75,5 +76,6 @@ def index():
             session['known'] = True
         session['name'] = form.name.data
         return redirect(url_for('index'))
+    pessoas = User.query.all()  # Obtém todos os registros de usuário do banco de dados
     return render_template('index.html', form=form, name=session.get('name'),
-                           known=session.get('known', False))
+                           known=session.get('known', False), pessoas=pessoas)
