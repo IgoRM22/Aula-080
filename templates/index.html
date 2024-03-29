@@ -13,21 +13,22 @@
     {% endif %}
 </div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for user in users %}
-        <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ user.username }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
+<h2>Lista de Pessoas</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for pessoa in pessoas %}
+    <tr>
+      <td>{{ pessoa.id }}</td>
+      <td>{{ pessoa.nome }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 
 {{ wtf.quick_form(form) }}
