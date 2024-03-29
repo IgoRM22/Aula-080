@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Flasky{% endblock %}
+{% block title %}Flaskys{% endblock %}
 
 {% block page_content %}
 <div class="page-header">
@@ -13,21 +13,19 @@
     {% endif %}
 </div>
 {{ wtf.quick_form(form) }}
-<h2>Lista de Pessoas</h2>
+<h2>Relação de usuários cadastrados</h2>
 <table class="table">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Username</th>
-      <th>Role</th>
+      <th>Nome do usuário</th>
+      <th>Função</th>
     </tr>
   </thead>
   <tbody>
     {% for pessoa in pessoas %}
     <tr>
-      <td>{{ pessoa.id }}</td>
       <td>{{ pessoa.username }}</td>
-      <td>{{ pessoa.role.name if pessoa.role else 'No role' }}</td>
+      <td>{{ pessoa.role.name if pessoa.role else 'User' }}</td>
     </tr>
     {% endfor %}
   </tbody>
