@@ -19,4 +19,5 @@ def send_simple_message(subject, text):
         response.raise_for_status()
         return 'E-mail enviado com sucesso!'
     except requests.exceptions.RequestException as e:
+        print(f'Erro ao enviar e-mail: {e}')  # Print do erro no console
         return f'ERRO - Verifique se o seu e-mail está verificado na Mailgun'
